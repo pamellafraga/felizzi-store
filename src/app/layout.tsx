@@ -4,7 +4,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { JsonLd } from "@/components/JsonLd";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { clinic } from "@/data/clinic";
-import { images } from "@/data/images";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -33,7 +33,7 @@ const description =
   "Consultório veterinário da Dra. Maristela Arimilato no Jardim Botânico, em Porto Alegre. Clínica geral, homeopatia, vacinas, profilaxia dentária e medicamentos.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(getSiteUrl()),
   title,
   description,
   applicationName: clinic.practice,

@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #111111;
+  --color-charcoal: #171717;
+  --color-ivory: #f7f2ef;
+  --color-snow: #fffdfc;
+  --color-rose: #c2185b;
+  --color-rose-bright: #d72d70;
+  --color-blush: #efa6b9;
+  --color-champagne: #d8c8c0;
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-cormorant);
+  --font-script: var(--font-caveat);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 14px;
+  --shadow-soft: 0 24px 50px -28px rgb(17 17 17 / 0.4);
+}
+
+:root {
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor a,
+html.has-custom-cursor button {
+  cursor: none;
+}
+
+body {
+  background: var(--color-snow);
+  color: var(--color-ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-rose) 22%, white);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-snow);
+  color: var(--color-ink);
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: var(--color-rose);
+  transition: width 0.45s var(--ease-luxe);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--color-snow);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}
+
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-script {
+  font-family: var(--font-caveat), cursive;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

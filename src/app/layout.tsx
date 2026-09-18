@@ -1,93 +1,87 @@
 import type { Metadata, Viewport } from "next";
-import { Caveat, Cormorant_Garamond, Manrope } from "next/font/google";
-import { CustomCursor } from "@/components/CustomCursor";
-import { JsonLd } from "@/components/JsonLd";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { clinic } from "@/data/clinic";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { ScrollProgress } from "@/components/layout/Chrome";
+import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { Providers } from "@/components/commerce/Providers";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { site } from "@/data/site";
 import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
-const manrope = Manrope({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-outfit",
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
 });
 
-const caveat = Caveat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-caveat",
-  display: "swap",
-});
-
-const title = "Dra. Maristela Arimilato | Consultório Veterinário em Porto Alegre";
-const description =
-  "Consultório veterinário da Dra. Maristela Arimilato no Jardim Botânico, em Porto Alegre. Clínica geral, homeopatia, vacinas, profilaxia dentária e medicamentos.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
-  title,
-  description,
-  applicationName: clinic.practice,
-  authors: [{ name: clinic.name }],
-  keywords: [
-    "veterinária Porto Alegre",
-    "consultório veterinário Jardim Botânico",
-    "Dra. Maristela Arimilato",
-    "clínica geral veterinária",
-    "homeopatia veterinária",
-  ],
+  title: {
+    default: site.seo.title,
+    template: site.seo.titleTemplate,
+  },
+  description: site.description,
+  applicationName: site.name,
+  keywords: [...site.seo.keywords],
+  authors: [{ name: site.name }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title,
-    description,
-    locale: "pt_BR",
+    title: site.seo.title,
+    description: site.description,
+    locale: site.locale,
     type: "website",
+    siteName: site.name,
     images: [
       {
-        url: images.hero,
-        width: 1376,
-        height: 768,
-        alt: "Cão e gato juntos no consultório da Dra. Maristela Arimilato",
+        url: "/images/looks/v2/look-02.png",
+        width: 252,
+        height: 328,
+        alt: "Felizzi Store",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
-    images: [images.hero],
+    title: site.seo.title,
+    description: site.description,
+    images: ["/images/looks/v2/look-02.png"],
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#111111",
+  themeColor: "#eadfd4",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="pt-BR"
-      className={`${manrope.variable} ${cormorant.variable} ${caveat.variable} h-full antialiased`}
-    >
-      <body className="min-h-full bg-snow font-sans text-ink">
+    <html lang="pt-BR" className={`${outfit.variable} ${cormorant.variable} h-full antialiased`}>
+      <body className="min-h-full bg-ivory font-sans text-ink">
         <a className="skip-link" href="#conteudo">
           Pular para o conteúdo
         </a>
         <JsonLd />
-        {children}
-        <WhatsAppButton />
-        <CustomCursor />
+        <ScrollProgress />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+          <WhatsAppButton />
+        </Providers>
       </body>
     </html>
   );

@@ -1,0 +1,135 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { MobileMenu } from "@/components/navigation/MobileMenu";
+import { SearchOverlay } from "@/components/navigation/SearchOverlay";
+import { Logo } from "@/components/ui/Logo";
+import { CartButton } from "@/components/commerce/CartButton";
+import { InstagramIcon, SearchIcon } from "@/components/ui/Icons";
+import { navigation, site } from "@/data/site";
+import { useLockBody } from "@/hooks/useLockBody";
+import { useScrolled } from "@/hooks/useScrolled";
+import { cn } from "@/lib/cn";
+
+export function Header() {
+  const scrolled = useScrolled(24);
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const usesDarkHero =
+    pathname === "/" ||
+    pathname === "/colecoes" ||
+    pathname === "/looks" ||
+    pathname === "/sobre" ||
+    pathname === "/loja" ||
+    pathname.startsWith("/categoria/");
+  const overHero = usesDarkHero && !scrolled && !menuOpen;
+
+  useLockBody(menuOpen || searchOpen);
+
+  const leftNav = navigation.slice(0, 3);
+  const rightNav = navigation.slice(3);
+
+  return (
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-[80] transition-[background-color,height,box-shadow,border-color,color] duration-500",
+          overHero
+            ? "border-b border-transparent bg-transparent text-ivory"
+            : "border-b border-ink/8 bg-ivory/92 text-ink shadow-[0_10px_40px_-28px_rgb(27_23_20_/_0.35)] backdrop-blur-md",
+        )}
+      >
+        <div
+          className={cn(
+            "mx-auto grid max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 transition-[height] duration-500 sm:px-8 lg:px-12",
+            scrolled ? "h-[68px] lg:h-[72px]" : "h-[84px] lg:h-[104px]",
+          )}
+        >
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              className="inline-flex size-11 items-center justify-center lg:hidden"
+              aria-expanded={menuOpen}
+              aria-controls="menu-mobile"
+              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+              onClick={() => setMenuOpen((value) => !value)}
+            >
+              <span className="sr-only">Menu</span>
+              <span className="flex w-5 flex-col gap-1.5">
+                <span className={cn("h-px w-full bg-current transition-transform duration-500", menuOpen && "translate-y-[5px] rotate-45")} />
+                <span className={cn("h-px w-full bg-current transition-opacity duration-300", menuOpen && "opacity-0")} />
+                <span className={cn("h-px w-full bg-current transition-transform duration-500", menuOpen && "-translate-y-[5px] -rotate-45")} />
+              </span>
+            </button>
+            <nav className="hidden items-center gap-7 lg:flex" aria-label="Principal">
+              {leftNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  data-active={pathname === item.href}
+                  className={cn(
+                    "nav-underline text-[11px] uppercase tracking-[0.22em]",
+                    overHero ? "text-ivory" : "text-ink",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <Link href="/" className="justify-self-center" aria-label={`${site.shortName} — início`}>
+            <Logo
+              tone={overHero ? "light" : "dark"}
+              markClassName={cn(
+                "h-8 sm:h-9 lg:h-11 transition-[height,color,filter] duration-500",
+                scrolled && "lg:h-8",
+              )}
+            />
+          </Link>
+
+          <div className="flex items-center justify-end gap-4 sm:gap-5">
+            <nav className="hidden items-center gap-7 xl:flex" aria-label="Secundária">
+              {rightNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  data-active={pathname === item.href}
+                  className={cn(
+                    "nav-underline text-[11px] uppercase tracking-[0.22em]",
+                    overHero ? "text-ivory" : "text-ink",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="inline-flex size-10 items-center justify-center"
+              aria-label="Buscar"
+            >
+              <SearchIcon className="size-4.5 h-4 w-4" />
+            </button>
+            <a
+              href={site.social.instagram.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden size-10 items-center justify-center sm:inline-flex"
+              aria-label="Instagram da Felizzi"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+            <CartButton inverted={overHero} />
+          </div>
+        </div>
+      </header>
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+    </>
+  );
+}

@@ -1,8 +1,19 @@
-const WHATSAPP_NUMBER = "5551991150994";
+import { site } from "@/data/site";
 
-const DEFAULT_MESSAGE =
-  "Olá, Dra. Maristela! Gostaria de agendar uma consulta para meu pet.";
+export function getWhatsAppUrl(message: string = site.contact.whatsappMessage) {
+  const number = (process.env.NEXT_PUBLIC_WHATSAPP_E164 ?? site.contact.whatsappE164).trim();
+  if (!number) return null;
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
 
-export function getWhatsAppUrl(message: string = DEFAULT_MESSAGE) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+export function getPrimaryContactHref(message?: string) {
+  return getWhatsAppUrl(message) ?? site.social.instagram.href;
+}
+
+export function getPrimaryContactLabel() {
+  return site.copy.whatsappCta;
+}
+
+export function hasWhatsApp() {
+  return Boolean((process.env.NEXT_PUBLIC_WHATSAPP_E164 ?? site.contact.whatsappE164).trim());
 }

@@ -169,7 +169,7 @@ export function CheckoutExperience() {
   return (
     <form onSubmit={placeOrder} className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-7">
-        <ol className="mb-10 flex flex-wrap gap-4 text-[11px] uppercase tracking-[0.2em] text-stone sm:gap-6">
+        <ol className="mb-8 grid grid-cols-2 gap-x-4 gap-y-3 text-[11px] uppercase tracking-[0.16em] text-stone sm:mb-10 sm:flex sm:flex-wrap sm:gap-6 sm:tracking-[0.2em]">
           {["Dados", "Entrega", "Pagamento", "Revisão"].map((label, index) => (
             <li key={label}>
               <button
@@ -284,16 +284,16 @@ export function CheckoutExperience() {
 
         <div className="mt-10 flex gap-4">
           {step > 1 ? (
-            <button type="button" onClick={() => setStep((value) => value - 1)} className="px-2 text-[11px] uppercase tracking-[0.2em] text-stone">
+            <button type="button" onClick={() => setStep((value) => value - 1)} className="inline-flex min-h-11 items-center px-2 text-[11px] uppercase tracking-[0.2em] text-stone">
               Voltar
             </button>
           ) : null}
           {step < 4 ? (
-            <button type="button" onClick={next} className="bg-ink px-8 py-3.5 text-[11px] uppercase tracking-[0.22em] text-ivory">
+            <button type="button" onClick={next} className="min-h-11 flex-1 bg-ink px-8 py-3.5 text-[11px] uppercase tracking-[0.22em] text-ivory sm:flex-none">
               Continuar
             </button>
           ) : (
-            <button type="submit" className="bg-ink px-8 py-3.5 text-[11px] uppercase tracking-[0.22em] text-ivory">
+            <button type="submit" className="min-h-11 flex-1 bg-ink px-8 py-3.5 text-[11px] uppercase tracking-[0.22em] text-ivory sm:flex-none">
               Confirmar pedido demo
             </button>
           )}
@@ -382,7 +382,7 @@ function Choice({
     <button
       type="button"
       onClick={onClick}
-      className={cn("border p-4 text-left transition-colors", active ? "border-ink bg-champagne/50" : "border-ink/15")}
+        className={cn("min-h-[4.5rem] border p-4 text-left transition-colors", active ? "border-ink bg-champagne/50" : "border-ink/15")}
     >
       <span className="block text-[11px] uppercase tracking-[0.18em] text-ink">{title}</span>
       <span className="mt-1 block text-sm text-stone">{text}</span>

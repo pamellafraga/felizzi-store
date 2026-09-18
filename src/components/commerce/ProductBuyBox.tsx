@@ -62,7 +62,8 @@ export function ProductBuyBox({ product }: { product: Product }) {
   return (
     <div>
       <p className="font-display text-3xl font-light text-ink">{formatBRL(product.priceCents)}</p>
-      <p className="mt-2 text-xs text-stone">Preço Felizzi · variante Shopify Storefront</p>
+      <p className="mt-2 text-xs text-stone sm:hidden">Preço Felizzi</p>
+      <p className="mt-2 hidden text-xs text-stone sm:block">Preço Felizzi · variante Shopify Storefront</p>
 
       <fieldset className="mt-8">
         <legend className="text-[11px] uppercase tracking-[0.22em] text-stone">Tamanho</legend>
@@ -77,7 +78,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
                 setError("");
               }}
               className={cn(
-                "min-w-12 border px-3 py-2 text-[12px] uppercase tracking-[0.16em] transition-colors",
+                "min-h-11 min-w-11 border px-3 text-[12px] uppercase tracking-[0.16em] transition-colors",
                 size === variant.size ? "border-ink bg-ink text-ivory" : "border-ink/20 text-ink",
                 !variant.available && "cursor-not-allowed opacity-35 line-through",
               )}
@@ -86,7 +87,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
             </button>
           ))}
         </div>
-        <button type="button" onClick={() => setGuideOpen((value) => !value)} className="mt-3 text-[11px] uppercase tracking-[0.18em] text-stone">
+        <button type="button" onClick={() => setGuideOpen((value) => !value)} className="mt-3 inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-stone">
           {guideOpen ? "Fechar guia" : "Guia de medidas"}
         </button>
         {guideOpen ? (
@@ -158,7 +159,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
             aria-label="CEP"
             className="w-full border-b border-ink/20 bg-transparent py-2 outline-none"
           />
-          <button type="button" onClick={() => void onCep()} className="shrink-0 text-[11px] uppercase tracking-[0.18em]">
+          <button type="button" onClick={() => void onCep()} className="shrink-0 px-2 min-h-11 text-[11px] uppercase tracking-[0.18em]">
             {cepLoading ? "…" : "OK"}
           </button>
         </div>
@@ -168,7 +169,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
       <div
         id="buy-sticky"
         data-show="false"
-        className="fixed inset-x-0 bottom-0 z-[70] border-t border-ink/10 bg-ivory/95 p-3 backdrop-blur transition-transform duration-300 md:hidden data-[show=false]:translate-y-full"
+        className="fixed inset-x-0 bottom-0 z-[70] border-t border-ink/10 bg-ivory/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur transition-transform duration-300 md:hidden data-[show=false]:translate-y-full"
       >
         <button type="button" onClick={onAdd} className="w-full bg-ink py-3.5 text-[11px] uppercase tracking-[0.2em] text-ivory">
           Adicionar · {formatBRL(product.priceCents)}

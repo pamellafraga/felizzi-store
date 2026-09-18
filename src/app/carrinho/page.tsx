@@ -14,7 +14,7 @@ export default function CarrinhoPage() {
   return (
     <main id="conteudo">
       <PageHero kicker="Shopify demo" title="Sacola" subtitle="Revise as peças antes de finalizar." />
-      <Container className="pb-24">
+      <Container className="pb-28 lg:pb-24">
         <div className="mb-10">
           <ShopifyStatus />
         </div>

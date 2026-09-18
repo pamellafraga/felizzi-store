@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 export async function ShopifyStatus({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const shop = await getShopifyShop().catch(() => null);
   const className = cn(
-    "text-[11px] uppercase tracking-[0.18em]",
+    "text-[11px] uppercase leading-relaxed tracking-[0.14em] sm:tracking-[0.18em]",
     tone === "light" ? "text-ivory/40" : "text-stone",
   );
 
@@ -14,7 +14,11 @@ export async function ShopifyStatus({ tone = "dark" }: { tone?: "dark" | "light"
 
   return (
     <p className={className}>
-      Storefront Shopify ligada · {shop.name} · {shop.domain} · {shop.mode === "demo" ? "demo" : "live"}
+      Shopify · {shop.name}
+      <span className="hidden sm:inline">
+        {" "}
+        · {shop.domain} · {shop.mode === "demo" ? "demo" : "live"}
+      </span>
     </p>
   );
 }

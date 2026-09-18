@@ -35,14 +35,14 @@ export default async function LookPage({ params }: Props) {
   const related = getRelatedLooks(look.slug);
 
   return (
-    <main id="conteudo" className="pt-24 lg:pt-28">
+    <main id="conteudo" className="pt-20 lg:pt-28">
       <Container className="grid gap-10 pb-24 lg:grid-cols-12 lg:gap-16">
         <div className="relative aspect-[4/5] overflow-hidden bg-sand lg:col-span-7">
           <Image src={look.image} alt={look.title} fill preload sizes="(max-width: 1024px) 100vw, 58vw" className="object-cover" />
         </div>
         <div className="lg:col-span-5 lg:pt-8">
           <p className="text-[11px] uppercase tracking-[0.28em] text-stone">{look.kicker}</p>
-          <h1 className="mt-4 font-display text-5xl font-light tracking-tight text-ink lg:text-6xl">{look.title}</h1>
+          <h1 className="mt-4 font-display text-4xl font-light tracking-tight text-ink lg:text-6xl">{look.title}</h1>
           <p className="mt-6 max-w-md text-base leading-relaxed text-stone">{look.description}</p>
           <div className="mt-10">
             <p className="text-[11px] uppercase tracking-[0.22em] text-stone">Peças relacionadas</p>

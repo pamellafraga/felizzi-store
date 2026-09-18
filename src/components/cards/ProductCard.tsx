@@ -36,21 +36,25 @@ export function ProductCard({ product, className }: ProductCardProps) {
               className="object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100"
             />
           ) : null}
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-ink/55 to-transparent p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100 max-md:opacity-100">
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-ink/55 to-transparent p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
             <span className="text-[10px] uppercase tracking-[0.22em] text-ivory">Comprar</span>
           </div>
         </div>
-        <div className="mt-4 flex items-start justify-between gap-3">
-          <div>
+        <div className="mt-3 flex items-start justify-between gap-3 sm:mt-4">
+          <div className="min-w-0">
             {product.isNew ? (
               <p className="mb-1 text-[10px] uppercase tracking-[0.26em] text-stone">Novidade</p>
             ) : null}
-            <h3 className="font-display text-xl font-light tracking-tight text-ink">{product.name}</h3>
-            <p className="mt-1 text-[12px] uppercase tracking-[0.18em] text-stone">{categoryLabel[product.category]}</p>
+            <h3 className="font-display text-[1.125rem] font-light leading-snug tracking-tight text-ink sm:text-xl">
+              {product.name}
+            </h3>
+            <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-stone sm:text-[12px] sm:tracking-[0.18em]">
+              {categoryLabel[product.category]}
+            </p>
             <p className="mt-2 text-sm text-ink">{formatBRL(product.priceCents)}</p>
           </div>
         </div>
-        <p className="mt-2 max-w-[28ch] text-sm leading-relaxed text-stone">{product.shortDescription}</p>
+        <p className="mt-2 hidden max-w-[28ch] text-sm leading-relaxed text-stone md:block">{product.shortDescription}</p>
       </Link>
     </article>
   );

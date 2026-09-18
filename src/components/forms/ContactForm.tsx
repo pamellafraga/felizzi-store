@@ -57,7 +57,7 @@ export function ContactForm() {
       </label>
       <button
         type="submit"
-        className="bg-ink px-8 py-4 text-[11px] font-medium uppercase tracking-[0.22em] text-ivory transition-colors hover:bg-graphite"
+        className="min-h-12 bg-ink px-8 py-4 text-[11px] font-medium uppercase tracking-[0.22em] text-ivory transition-colors hover:bg-graphite"
       >
         Enviar mensagem
       </button>

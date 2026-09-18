@@ -20,7 +20,7 @@ export default function ContatoPage() {
         title="Contato"
         subtitle="A conversa continua sendo o jeito Felizzi de receber."
       />
-      <Container className="grid gap-16 pb-24 lg:grid-cols-12">
+      <Container className="grid gap-12 pb-24 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <p className="font-display text-3xl font-light italic text-graphite">“Fale com a Felizzi e descubra mais.”</p>
           <p className="mt-8 whitespace-pre-line text-sm leading-relaxed text-stone">{formatAddress(true)}</p>

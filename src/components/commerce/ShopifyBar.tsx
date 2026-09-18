@@ -7,13 +7,21 @@ export async function ShopifyBar() {
 
   return (
     <section className="border-y border-ink/10 bg-sand" aria-label="Shopify Storefront">
-      <Container className="flex flex-col items-center justify-between gap-3 py-4 text-center sm:flex-row sm:text-left">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-stone">
-          {shop
-            ? `Shopify Storefront ligada · ${shop.name} · ${shop.domain}`
-            : "Shopify Storefront indisponível"}
+      <Container className="flex flex-col items-start justify-between gap-2 py-3 sm:flex-row sm:items-center sm:py-4 sm:text-left">
+        <p className="max-w-full text-[11px] uppercase leading-relaxed tracking-[0.14em] text-stone sm:tracking-[0.22em]">
+          {shop ? (
+            <>
+              Shopify · {shop.name}
+              <span className="hidden sm:inline"> · {shop.domain}</span>
+            </>
+          ) : (
+            "Shopify Storefront indisponível"
+          )}
         </p>
-        <Link href="/novidades" className="text-[11px] uppercase tracking-[0.22em] text-ink">
+        <Link
+          href="/novidades"
+          className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.22em] text-ink"
+        >
           Comprar agora
         </Link>
       </Container>

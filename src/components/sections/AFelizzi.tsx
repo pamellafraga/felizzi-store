@@ -6,9 +6,9 @@ import { site } from "@/data/site";
 
 export function AFelizzi() {
   return (
-    <section className="bg-champagne py-24 lg:py-32" aria-labelledby="afelizzi-title">
-      <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="relative col-span-12 aspect-[4/5] overflow-hidden bg-sand lg:col-span-6">
+    <section className="bg-champagne py-16 lg:py-32" aria-labelledby="afelizzi-title">
+      <Container className="grid min-w-0 items-center gap-10 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="relative min-w-0 aspect-[4/5] overflow-hidden bg-sand lg:col-span-6">
           <Image
             src="/images/looks/v2/look-04.png"
             alt="Look Felizzi em camurça caramelo"
@@ -17,10 +17,10 @@ export function AFelizzi() {
             className="object-cover"
           />
         </Reveal>
-        <div className="col-span-12 lg:col-span-6">
+        <div className="min-w-0 lg:col-span-6">
           <Reveal>
             <p className="text-[11px] uppercase tracking-[0.28em] text-stone">A marca</p>
-            <h2 id="afelizzi-title" className="mt-4 font-display text-5xl font-light tracking-tight text-ink lg:text-7xl">
+            <h2 id="afelizzi-title" className="mt-4 font-display text-4xl font-light tracking-tight text-ink lg:text-7xl">
               A Felizzi
             </h2>
             <blockquote className="mt-8 max-w-md font-display text-2xl font-light italic leading-snug text-graphite">

@@ -23,9 +23,9 @@ export default function LojaPage() {
         image="/images/looks/v2/look-06.png"
         imageAlt="Interior da Felizzi Store"
       />
-      <Container className="grid gap-12 py-20 lg:grid-cols-12">
+      <Container className="grid gap-10 py-14 lg:grid-cols-12 lg:gap-12 lg:py-20">
         <div className="lg:col-span-5">
-          <h2 className="font-display text-4xl font-light text-ink">Venha nos visitar.</h2>
+          <h2 className="font-display text-3xl font-light text-ink sm:text-4xl">Venha nos visitar.</h2>
           <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-graphite">{formatAddress(true)}</p>
           {site.hours.entries.length > 0 ? (
             <ul className="mt-6 space-y-2 text-sm text-stone">
@@ -48,7 +48,7 @@ export default function LojaPage() {
               href={site.social.instagram.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.2em]"
+              className="inline-flex min-h-11 items-center gap-3 text-[12px] uppercase tracking-[0.2em]"
             >
               <InstagramIcon className="h-4 w-4" />
               {site.social.instagram.handle}
@@ -57,7 +57,7 @@ export default function LojaPage() {
               href={getPrimaryContactHref()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.2em]"
+              className="inline-flex min-h-11 items-center gap-3 text-[12px] uppercase tracking-[0.2em]"
             >
               <WhatsAppIcon className="h-4 w-4" />
               {getPrimaryContactLabel()}
@@ -82,7 +82,7 @@ export default function LojaPage() {
           />
         </div>
       </Container>
-      <Container className="grid gap-4 pb-24 md:grid-cols-2">
+      <Container className="grid gap-3 pb-24 sm:gap-4 md:grid-cols-2">
         <div className="relative aspect-[4/5] overflow-hidden bg-sand">
           <Image src="/images/looks/v2/look-05.png" alt="Provador da Felizzi" fill sizes="50vw" className="object-cover" />
         </div>

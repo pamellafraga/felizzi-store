@@ -28,8 +28,8 @@ export function CatalogFilters() {
 
   return (
     <div>
-      <div className="flex flex-col gap-4 border-b border-ink/10 pb-4 lg:flex-row lg:items-end lg:justify-between">
-        <div className="flex flex-wrap gap-x-6 gap-y-3" role="tablist" aria-label="Filtros">
+      <div className="flex flex-col gap-3 border-b border-ink/10 pb-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-wrap gap-x-6 gap-y-1" role="tablist" aria-label="Filtros">
           {productFilters.map((item) => (
             <button
               key={item.id}
@@ -38,7 +38,7 @@ export function CatalogFilters() {
               aria-selected={filter === item.id}
               onClick={() => setFilter(item.id)}
               className={cn(
-                "text-[11px] uppercase tracking-[0.22em] transition-colors",
+                "min-h-11 text-[11px] uppercase tracking-[0.18em] transition-colors sm:tracking-[0.22em]",
                 filter === item.id ? "text-ink" : "text-stone hover:text-ink",
               )}
             >
@@ -46,12 +46,12 @@ export function CatalogFilters() {
             </button>
           ))}
         </div>
-        <label className="text-[11px] uppercase tracking-[0.18em] text-stone">
+        <label className="flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-stone">
           Ordenar
           <select
             value={sort}
             onChange={(event) => setSort(event.target.value as SortId)}
-            className="ml-3 border-b border-ink/20 bg-transparent py-1 text-[11px] uppercase tracking-[0.16em] text-ink outline-none"
+            className="ml-3 max-w-[60vw] border-b border-ink/20 bg-transparent py-2 text-[11px] uppercase tracking-[0.16em] text-ink outline-none"
           >
             {sorts.map((item) => (
               <option key={item.id} value={item.id}>
@@ -67,7 +67,7 @@ export function CatalogFilters() {
       {items.length === 0 ? (
         <p className="py-24 text-center font-display text-2xl font-light text-stone">Em breve nesta curadoria.</p>
       ) : (
-        <div className="mt-10 grid grid-cols-1 gap-x-5 gap-y-14 min-[400px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-10 sm:mt-10 sm:gap-x-5 sm:gap-y-14 md:grid-cols-3 xl:grid-cols-4">
           {items.map((product) => (
             <ProductCard key={product.slug} product={product} />
           ))}

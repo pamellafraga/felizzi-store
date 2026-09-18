@@ -7,11 +7,11 @@ import { site } from "@/data/site";
 
 export function Instagram() {
   return (
-    <section className="marble py-24 lg:py-32" aria-labelledby="instagram-title">
+    <section className="marble py-16 lg:py-32" aria-labelledby="instagram-title">
       <Container>
         <Reveal className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div>
-            <h2 id="instagram-title" className="font-display text-5xl font-light tracking-tight text-ink lg:text-6xl">
+            <h2 id="instagram-title" className="font-display text-4xl font-light tracking-tight text-ink lg:text-6xl">
               {site.copy.instagramTitle}
             </h2>
             <p className="mt-3 text-[13px] uppercase tracking-[0.28em] text-stone">{site.social.instagram.handle}</p>
@@ -20,7 +20,7 @@ export function Instagram() {
             {site.copy.instagramCta}
           </Button>
         </Reveal>
-        <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-5">
+        <div className="mt-10 grid grid-cols-2 gap-2 sm:mt-14 sm:gap-3 md:grid-cols-3 lg:gap-5">
           {instagramPosts.map((post, index) => (
             <Reveal key={post.src} delay={index * 0.04}>
               <a

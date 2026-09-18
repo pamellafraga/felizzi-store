@@ -18,17 +18,30 @@
 
 :root {
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+  --fab-bottom: max(1rem, calc(env(safe-area-inset-bottom, 0px) + 0.75rem));
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   background: var(--color-ivory);
   color: var(--color-ink);
   font-family: var(--font-outfit), system-ui, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body:has(#buy-sticky[data-show="true"]) {
+  --fab-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  :root,
+  body:has(#buy-sticky[data-show="true"]) {
+    --fab-bottom: 2rem;
+  }
 }
 
 ::selection {

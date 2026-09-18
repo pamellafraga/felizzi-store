@@ -8,7 +8,7 @@ export function CartButton({ inverted = false }: { inverted?: boolean }) {
   const { count, openCart } = useCart();
 
   return (
-    <button type="button" onClick={openCart} className="relative inline-flex size-10 items-center justify-center" aria-label={`Sacola, ${count} ${count === 1 ? "item" : "itens"}`}>
+    <button type="button" onClick={openCart} className="relative inline-flex size-11 items-center justify-center" aria-label={`Sacola, ${count} ${count === 1 ? "item" : "itens"}`}>
       <BagIcon className="h-4 w-4" />
       {count > 0 ? (
         <span

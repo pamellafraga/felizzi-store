@@ -36,22 +36,25 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[80] transition-[background-color,height,box-shadow,border-color,color] duration-500",
+          "fixed inset-x-0 top-0 z-[80] pt-[env(safe-area-inset-top)] transition-[background-color,height,box-shadow,border-color,color] duration-500",
           overHero
-            ? "border-b border-transparent bg-transparent text-ivory"
-            : "border-b border-ink/8 bg-ivory/92 text-ink shadow-[0_10px_40px_-28px_rgb(27_23_20_/_0.35)] backdrop-blur-md",
+            ? "border-b border-transparent bg-ink/30 text-ivory backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none"
+            : "border-b border-ink/8 bg-ivory/95 text-ink shadow-[0_10px_40px_-28px_rgb(27_23_20_/_0.35)] backdrop-blur-md",
         )}
       >
         <div
           className={cn(
-            "mx-auto grid max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 transition-[height] duration-500 sm:px-8 lg:px-12",
-            scrolled ? "h-[68px] lg:h-[72px]" : "h-[84px] lg:h-[104px]",
+            "mx-auto grid max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-4 transition-[height] duration-500 sm:px-8 lg:px-12",
+            scrolled ? "h-14 lg:h-[72px]" : "h-16 lg:h-[104px]",
           )}
         >
           <div className="flex items-center gap-2">
             <button
               type="button"
-              className="inline-flex size-11 items-center justify-center lg:hidden"
+              className={cn(
+                "inline-flex size-11 items-center justify-center lg:hidden",
+                overHero && "drop-shadow-[0_1px_8px_rgb(27_23_20_/_0.45)]",
+              )}
               aria-expanded={menuOpen}
               aria-controls="menu-mobile"
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
@@ -85,13 +88,13 @@ export function Header() {
             <Logo
               tone={overHero ? "light" : "dark"}
               markClassName={cn(
-                "h-8 sm:h-9 lg:h-11 transition-[height,color,filter] duration-500",
+                "h-7 sm:h-9 lg:h-11 transition-[height,color,filter] duration-500",
                 scrolled && "lg:h-8",
               )}
             />
           </Link>
 
-          <div className="flex items-center justify-end gap-4 sm:gap-5">
+          <div className={cn("flex items-center justify-end gap-1 sm:gap-5", overHero && "drop-shadow-[0_1px_8px_rgb(27_23_20_/_0.45)]")}>
             <nav className="hidden items-center gap-7 xl:flex" aria-label="Secundária">
               {rightNav.map((item) => (
                 <Link
@@ -110,7 +113,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="inline-flex size-10 items-center justify-center"
+              className="inline-flex size-11 items-center justify-center"
               aria-label="Buscar"
             >
               <SearchIcon className="size-4.5 h-4 w-4" />

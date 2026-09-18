@@ -7,9 +7,9 @@ export function Manifesto() {
 
   return (
     <section className="bg-espresso text-ivory" aria-labelledby="manifesto-title">
-      <Container className="grid gap-12 py-24 lg:grid-cols-[1.4fr_0.8fr] lg:items-end lg:py-32">
+      <Container className="grid gap-12 py-16 lg:items-end lg:py-32 lg:grid-cols-[1.4fr_0.8fr]">
         <Reveal>
-          <h2 id="manifesto-title" className="font-display text-5xl font-light leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+          <h2 id="manifesto-title" className="font-display text-[2.5rem] font-light leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
             <span className="block">{first}</span>
             {rest.map((line) => (
               <span key={line} className="block text-ivory/80">

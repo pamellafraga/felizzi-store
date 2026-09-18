@@ -45,13 +45,13 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
           aria-modal="true"
           aria-label="Buscar na Felizzi"
         >
-          <div className="mx-auto flex min-h-full max-w-3xl flex-col px-6 pb-10 pt-28">
+          <div className="mx-auto flex min-h-full max-w-3xl flex-col overflow-y-auto px-5 pb-10 pt-[calc(6.5rem+env(safe-area-inset-top))] sm:px-6">
             <div className="flex items-center justify-between">
               <p className="text-[11px] uppercase tracking-[0.28em] text-stone">Buscar</p>
               <button
                 type="button"
                 onClick={onClose}
-                className="text-[11px] uppercase tracking-[0.22em] text-ink"
+                className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.22em] text-ink"
               >
                 Fechar
               </button>
@@ -61,7 +61,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Peças, looks, estilos"
-              className="mt-10 w-full border-b border-ink/20 bg-transparent pb-4 font-display text-3xl font-light tracking-tight text-ink outline-none placeholder:text-taupe sm:text-5xl"
+              className="mt-8 w-full border-b border-ink/20 bg-transparent pb-4 font-display text-3xl font-light tracking-tight text-ink outline-none placeholder:text-taupe sm:mt-10 sm:text-5xl"
               aria-label="Termo de busca"
             />
             <ul className="mt-10 space-y-4">

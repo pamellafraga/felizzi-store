@@ -6,11 +6,11 @@ import { formatAddress, site } from "@/data/site";
 
 export function LojaFisica() {
   return (
-    <section className="bg-ivory py-24 lg:py-32" aria-labelledby="loja-title">
+    <section className="bg-ivory py-16 lg:py-32" aria-labelledby="loja-title">
       <Container className="grid gap-10 lg:grid-cols-12 lg:items-center">
         <Reveal className="lg:col-span-5">
           <p className="text-[11px] uppercase tracking-[0.28em] text-stone">Loja física</p>
-          <h2 id="loja-title" className="mt-4 font-display text-5xl font-light tracking-tight text-ink lg:text-6xl">
+          <h2 id="loja-title" className="mt-4 font-display text-4xl font-light tracking-tight text-ink lg:text-6xl">
             {site.copy.storeTitle}
           </h2>
           <p className="mt-8 whitespace-pre-line text-base leading-relaxed text-graphite">{formatAddress(true)}</p>

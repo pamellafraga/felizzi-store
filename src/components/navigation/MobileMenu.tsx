@@ -28,8 +28,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="flex h-full flex-col px-6 pb-10 pt-24">
-            <nav aria-label="Menu mobile" className="flex flex-1 flex-col justify-center gap-1">
+          <div className="flex h-dvh min-h-0 flex-col overflow-y-auto overscroll-contain px-6 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-[calc(4.25rem+env(safe-area-inset-top))]">
+            <nav aria-label="Menu mobile" className="flex flex-1 flex-col justify-center gap-0">
               {navigation.map((item, index) => (
                 <motion.div
                   key={item.href}
@@ -40,7 +40,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="block border-b border-ink/10 py-4 font-display text-4xl font-light tracking-tight text-ink"
+                    className="block border-b border-ink/10 py-3.5 font-display text-[2rem] font-light leading-none tracking-tight text-ink sm:py-4 sm:text-4xl"
                     aria-current={pathname === item.href ? "page" : undefined}
                   >
                     {item.label}
@@ -48,11 +48,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 </motion.div>
               ))}
             </nav>
-            <div className="space-y-4 pt-8">
+            <div className="space-y-1 pt-8">
               <Link
                 href="/carrinho"
                 onClick={onClose}
-                className="block text-[12px] uppercase tracking-[0.22em] text-ink"
+                className="flex min-h-11 items-center text-[12px] uppercase tracking-[0.22em] text-ink"
               >
                 Sacola
               </Link>
@@ -60,7 +60,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 href={getPrimaryContactHref()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-[12px] uppercase tracking-[0.22em] text-ink"
+                className="flex min-h-11 items-center text-[12px] uppercase tracking-[0.22em] text-ink"
               >
                 WhatsApp
               </a>
@@ -68,12 +68,14 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 href={site.social.instagram.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-[12px] uppercase tracking-[0.22em] text-stone"
+                className="flex min-h-11 items-center text-[12px] uppercase tracking-[0.22em] text-stone"
               >
                 {site.social.instagram.handle}
               </a>
-              {hasWhatsApp() ? <p className="text-sm text-stone">Atendimento pelo WhatsApp.</p> : null}
-              <Logo />
+              {hasWhatsApp() ? <p className="pt-2 text-sm text-stone">Atendimento pelo WhatsApp.</p> : null}
+              <div className="pt-4">
+                <Logo />
+              </div>
             </div>
           </div>
         </motion.div>

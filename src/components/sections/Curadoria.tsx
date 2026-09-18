@@ -5,7 +5,7 @@ import { collections } from "@/data/collections";
 
 export function Curadoria() {
   return (
-    <section className="bg-ivory py-24 lg:py-32" aria-labelledby="curadoria-title">
+    <section className="bg-ivory py-16 lg:py-32" aria-labelledby="curadoria-title">
       <Container>
         <Reveal>
           <h2
@@ -16,7 +16,7 @@ export function Curadoria() {
           </h2>
         </Reveal>
       </Container>
-      <div className="mt-14 grid md:grid-cols-3">
+      <div className="mt-10 grid md:mt-14 md:grid-cols-3">
         {collections.map((collection) => (
           <CategoryPanel key={collection.slug} collection={collection} />
         ))}

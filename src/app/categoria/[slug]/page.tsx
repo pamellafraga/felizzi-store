@@ -45,7 +45,7 @@ export default async function CategoriaPage({ params }: Props) {
         {items.length === 0 ? (
           <p className="font-display text-2xl font-light text-stone">Em breve nesta coleção.</p>
         ) : (
-          <div className="grid grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 xl:grid-cols-4">
             {items.map((item) => (
               <ProductCard key={item.slug} product={item} />
             ))}

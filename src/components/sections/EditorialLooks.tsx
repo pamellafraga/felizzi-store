@@ -14,7 +14,7 @@ export function EditorialLooks() {
   if (!one || !two || !three || !four) return null;
 
   return (
-    <section className="overflow-hidden bg-champagne py-24 lg:py-32" aria-labelledby="inspiracao-title">
+    <section className="overflow-hidden bg-champagne py-16 lg:py-32" aria-labelledby="inspiracao-title">
       <Container>
         <Reveal>
           <SectionHeading
@@ -23,7 +23,7 @@ export function EditorialLooks() {
             subtitle="Looks, combinações e ideias para diferentes momentos."
           />
         </Reveal>
-        <div className="mt-16 grid grid-cols-12 gap-4 lg:gap-6">
+        <div className="mt-12 grid min-w-0 grid-cols-12 gap-3 sm:mt-16 sm:gap-4 lg:gap-6">
           <Reveal className="col-span-12 md:col-span-7">
             <LookLink look={one} className="aspect-[4/5] md:aspect-[5/6]" />
           </Reveal>
@@ -70,9 +70,9 @@ function LookLink({
         className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent opacity-80" />
-      <div className="absolute bottom-5 left-5 right-5">
+      <div className="absolute inset-x-0 bottom-0 p-4 sm:bottom-5 sm:left-5 sm:right-5 sm:p-0">
         <p className="text-[10px] uppercase tracking-[0.24em] text-ivory/70">{look.kicker}</p>
-        <h3 className="mt-1 font-display text-2xl font-light text-ivory">{look.title}</h3>
+        <h3 className="mt-1 font-display text-xl font-light text-ivory sm:text-2xl">{look.title}</h3>
       </div>
     </Link>
   );

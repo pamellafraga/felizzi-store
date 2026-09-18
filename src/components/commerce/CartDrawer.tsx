@@ -46,7 +46,7 @@ export function CartDrawer() {
             role="dialog"
             aria-modal="true"
             aria-label="Sacola"
-            className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-ivory shadow-soft"
+            className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-ivory shadow-soft pt-[env(safe-area-inset-top)]"
             initial={reduce ? false : { x: 24, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 24, opacity: 0 }}
@@ -59,7 +59,7 @@ export function CartDrawer() {
                   {count === 0 ? "Vazia" : `${count} ${count === 1 ? "peça" : "peças"}`}
                 </p>
               </div>
-              <button ref={closeRef} type="button" onClick={closeCart} className="text-[11px] uppercase tracking-[0.22em]">
+              <button ref={closeRef} type="button" onClick={closeCart} className="inline-flex min-h-11 min-w-11 items-center justify-center text-[11px] uppercase tracking-[0.22em]">
                 Fechar
               </button>
             </div>
@@ -98,7 +98,7 @@ export function CartDrawer() {
                           <div className="inline-flex items-center border border-ink/15">
                             <button
                               type="button"
-                              className="size-8 text-sm"
+                              className="size-10 text-sm"
                               aria-label="Diminuir quantidade"
                               onClick={() => updateQuantity(line.id, line.quantity - 1)}
                             >
@@ -107,14 +107,14 @@ export function CartDrawer() {
                             <span className="w-8 text-center text-sm">{line.quantity}</span>
                             <button
                               type="button"
-                              className="size-8 text-sm"
+                              className="size-10 text-sm"
                               aria-label="Aumentar quantidade"
                               onClick={() => updateQuantity(line.id, line.quantity + 1)}
                             >
                               +
                             </button>
                           </div>
-                          <button type="button" onClick={() => removeItem(line.id)} className="text-[11px] uppercase tracking-[0.18em] text-stone">
+                          <button type="button" onClick={() => removeItem(line.id)} className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-stone">
                             Remover
                           </button>
                         </div>
@@ -122,7 +122,7 @@ export function CartDrawer() {
                     </li>
                   ))}
                 </ul>
-                <div className="border-t border-ink/10 px-6 py-6">
+                <div className="border-t border-ink/10 px-6 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
                   <p className={cn("text-xs text-stone", remaining === 0 && "text-ink")}>
                     {remaining === 0
                       ? "Frete grátis liberado nesta demonstração."

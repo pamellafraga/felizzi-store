@@ -18,7 +18,7 @@ export default function CheckoutPage() {
         title="Finalizar"
         subtitle="Checkout Felizzi (PIX e retirada) ou checkout Shopify Storefront."
       />
-      <Container className="pb-24">
+      <Container className="pb-28 lg:pb-24">
         <div className="mb-10">
           <ShopifyStatus />
         </div>

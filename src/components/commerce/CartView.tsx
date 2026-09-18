@@ -37,11 +37,11 @@ export function CartView() {
                 </Link>
                 <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-stone">Tamanho {line.size}</p>
                 <div className="mt-4 inline-flex items-center border border-ink/15">
-                  <button type="button" className="size-9" onClick={() => updateQuantity(line.id, line.quantity - 1)} aria-label="Diminuir">
+                  <button type="button" className="size-10" onClick={() => updateQuantity(line.id, line.quantity - 1)} aria-label="Diminuir">
                     −
                   </button>
                   <span className="w-8 text-center">{line.quantity}</span>
-                  <button type="button" className="size-9" onClick={() => updateQuantity(line.id, line.quantity + 1)} aria-label="Aumentar">
+                  <button type="button" className="size-10" onClick={() => updateQuantity(line.id, line.quantity + 1)} aria-label="Aumentar">
                     +
                   </button>
                 </div>
@@ -65,7 +65,7 @@ export function CartView() {
           <span>Subtotal</span>
           <span>{formatBRL(subtotalCents)}</span>
         </p>
-        <Link href="/checkout" className="mt-8 flex w-full items-center justify-center bg-ink py-4 text-[11px] uppercase tracking-[0.22em] text-ivory">
+        <Link href="/checkout" className="mt-8 flex min-h-12 w-full items-center justify-center bg-ink py-4 text-[11px] uppercase tracking-[0.22em] text-ivory">
           Checkout Felizzi
         </Link>
         <div className="mt-3">

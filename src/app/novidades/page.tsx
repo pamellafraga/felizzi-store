@@ -19,7 +19,7 @@ export default function NovidadesPage() {
         subtitle="Uma seleção para vestir o seu momento — com checkout em demonstração Shopify."
       />
       <ShopifyBar />
-      <Container className="pb-24 lg:pb-32">
+      <Container className="pb-24 lg:pb-32 pt-2">
         <CatalogFilters />
       </Container>
     </main>
